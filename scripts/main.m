@@ -31,12 +31,12 @@ handles.Pnormed=handles.P/max(handles.P(:));
 handles.Fnormed1=FIHS(handles.Mnormed, handles.Pnormed);
 handles.Fnormed2=modIHS(handles.Mnormed, handles.Pnormed);
 
-handles.Fnormed1=handles.Fnormed-min(handles.Fnormed1(:));
-handles.Fnormed1=handles.Fnormed/max(handles.Fnormed1(:));
+handles.Fnormed1=handles.Fnormed1-min(handles.Fnormed1(:));
+handles.Fnormed1=handles.Fnormed1/max(handles.Fnormed1(:));
 
-handles.Fnormed2=handles.Fnormed-min(handles.Fnormed2(:));
-handles.Fnormed2=handles.Fnormed/max(handles.Fnormed2(:));
+handles.Fnormed2=handles.Fnormed2-min(handles.Fnormed2(:));
+handles.Fnormed2=handles.Fnormed2/max(handles.Fnormed2(:));
 
-imshow(handles.Fnormed1(:,:,1:3));
-imshow(handles.Fnormed2(:,:,1:3));
+figure, imshow(handles.Fnormed1(:,:,1:3));
+figure, imshow(handles.Fnormed2(:,:,1:3));
 
