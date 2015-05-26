@@ -3,9 +3,9 @@ close all;
 clear all;
 
 addpath ../examples
-load image1M.mat;
+load image3M.mat;
 filenameM=A;
-load image1P.mat;
+load image3P.mat;
 filenameP=B;
 
 handles.M=filenameM;
@@ -39,4 +39,4 @@ handles.Fnormed2=handles.Fnormed2/max(handles.Fnormed2(:));
 
 figure, imshow(handles.Fnormed1(:,:,1:3));
 figure, imshow(handles.Fnormed2(:,:,1:3));
-
+fprintf('Root-mean-square deviation: %d',RMSE(A,handles.Fnormed1(:,:,1:3)))
