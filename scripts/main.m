@@ -2,13 +2,11 @@ clc;
 close all;
 clear all;
 
-% cd ../examples
 addpath ../examples
 load image1M.mat;
 filenameM=A;
 load image1P.mat;
 filenameP=B;
-% cd ..
 
 handles.M=filenameM;
 handles.P=filenameP;
@@ -24,19 +22,21 @@ end
 % axes(handles.pan_axes);
 
 handles.P=double(handles.P);
-handles.Pnormed=handles.P/max(max(handles.P));
+handles.Pnormed=handles.P/max(handles.P(:));
 % plotpan(handles);
 % guidata(hObject,handles);
 
-%-----------------------------
-% addpath IHS
-% cd IHS
-fihs = FIHS(handles.M, handles.P);
-handles.F=FIHS(handles.M, handles.P);
-handles.Fnormed=FIHS(handles.Mnormed, handles.Pnormed);
-% cd ..
+% handles.F=FIHS(handles.M, handles.P);
+% handles.F=modIHS(handles.M, handles.P);
+handles.Fnormed1=FIHS(handles.Mnormed, handles.Pnormed);
+handles.Fnormed2=modIHS(handles.Mnormed, handles.Pnormed);
 
-handles.Fnormed=handles.Fnormed-min(min(min(handles.Fnormed)));
-handles.Fnormed=handles.Fnormed/max(max(max(handles.Fnormed)));
+handles.Fnormed1=handles.Fnormed-min(handles.Fnormed1(:));
+handles.Fnormed1=handles.Fnormed/max(handles.Fnormed1(:));
 
-imshow(handles.Fnormed);
+handles.Fnormed2=handles.Fnormed-min(handles.Fnormed2(:));
+handles.Fnormed2=handles.Fnormed/max(handles.Fnormed2(:));
+
+imshow(handles.Fnormed1(:,:,1:3));
+imshow(handles.Fnormed2(:,:,1:3));
+
