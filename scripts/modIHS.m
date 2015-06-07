@@ -5,6 +5,7 @@ M=double(M);
 P=double(P);
 
 %norm all bands be in range 0 to 1.
+bandCoeffs = ones(1, size(M,3));
 for i=1:size(M,3)
     bandCoeffs(i)=max(max(M(:,:,i)));
     M(:,:,i)=M(:,:,i)/bandCoeffs(i);
@@ -22,6 +23,7 @@ E = expEdge(P,lamda,eps);
 I=(alpha(1)*M(:,:,1)+alpha(2)*M(:,:,2)+alpha(3)*M(:,:,3)+alpha(4)*M(:,:,4));
 P=(P-mean(P(:)))*std(I(:))/std(P(:)) + mean(I(:));
 
+F = ones(size(M));
 for i=1:s
     F(:,:,i)=M(:,:,i)+E.*(P-I);
 end

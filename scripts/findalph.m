@@ -5,6 +5,8 @@ function findalph = impGradDes(M, P)
 findalph = ones(d,1);
 %findalph = zeros(c,1);
 
+A = ones(d, d);
+b = ones(d, 1);
 for i=1:d
    for j=1:d
        A(i,j) = sum(sum(M(:,:,i).*M(:,:,j)));
